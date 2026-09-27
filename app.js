@@ -79,6 +79,19 @@ function showError(message) {
   errorBox.hidden = false;
 }
 
+function subjectIcon(subject, type) {
+  if (type.toLowerCase() === "break") return "☕";
+  const name = subject.toLowerCase();
+  if (/math|calculus|algebra|geometry|statistics/.test(name)) return "✦";
+  if (/science|biology|chemistry|physics|lab/.test(name)) return "⚗";
+  if (/history|government|politic|social/.test(name)) return "⌛";
+  if (/english|writing|literature|essay/.test(name)) return "✎";
+  if (/language|spanish|french|chinese|japanese/.test(name)) return "あ";
+  if (/computer|coding|programming|code/.test(name)) return "⌘";
+  if (/art|design|music|theater/.test(name)) return "♫";
+  return "♡";
+}
+
 function renderPlan(plan) {
   document.querySelector("#plan-title").textContent = plan.title;
   document.querySelector("#plan-summary").textContent = plan.summary;
@@ -86,13 +99,21 @@ function renderPlan(plan) {
 
   const list = document.querySelector("#session-list");
   list.replaceChildren();
+  let studyIndex = 0;
   plan.sessions.forEach(session => {
     const card = document.createElement("article");
-    card.className = `session ${session.type.toLowerCase() === "break" ? "break" : ""}`;
+    const isBreak = session.type.toLowerCase() === "break";
+    card.className = isBreak ? "session break" : `session subject-tone-${studyIndex++ % 5}`;
 
-    const minutes = document.createElement("div");
+    const badge = document.createElement("div");
+    badge.className = "session-badge";
+    const icon = document.createElement("span");
+    icon.className = "session-icon";
+    icon.textContent = subjectIcon(session.subject, session.type);
+    const minutes = document.createElement("span");
     minutes.className = "session-time";
     minutes.textContent = `${session.minutes}m`;
+    badge.append(icon, minutes);
 
     const content = document.createElement("div");
     const heading = document.createElement("h3");
@@ -102,7 +123,7 @@ function renderPlan(plan) {
     const reason = document.createElement("small");
     reason.textContent = session.reason;
     content.append(heading, task, reason);
-    card.append(minutes, content);
+    card.append(badge, content);
     list.appendChild(card);
   });
 

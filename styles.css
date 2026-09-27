@@ -278,6 +278,66 @@ input, select { border-radius: 2px; border-style: dashed; background: rgba(255,2
 .orbit { border-style: dashed; }
 footer { font-family: "Caveat", cursive; font-size: 18px; }
 
+.study-buddy {
+  position: absolute;
+  z-index: 5;
+  left: 2%;
+  bottom: 0;
+  width: 146px;
+  height: 128px;
+  border: 5px solid rgba(255,255,255,.76);
+  border-radius: 49% 51% 45% 47%;
+  background: #fae3a6;
+  box-shadow: 0 12px 26px rgba(99,91,63,.14);
+  transform: rotate(-5deg);
+}
+.buddy-ear { position: absolute; top: -21px; width: 59px; height: 55px; border: 5px solid rgba(255,255,255,.76); background: #fae3a6; }
+.buddy-ear-left { left: 4px; border-radius: 70% 35% 50% 40%; transform: rotate(-24deg); }
+.buddy-ear-right { right: 4px; border-radius: 35% 70% 40% 50%; transform: rotate(24deg); }
+.buddy-face { position: absolute; z-index: 2; top: 43px; left: 35px; display: flex; align-items: center; gap: 15px; color: #9c6e6e; }
+.buddy-face i { display: block; width: 7px; height: 9px; border-radius: 50%; background: #7c625b; }
+.buddy-face b { margin-top: 14px; font: 700 20px "Caveat", cursive; }
+.buddy-beret { position: absolute; z-index: 4; top: -27px; left: 40px; width: 68px; height: 33px; border-radius: 60% 55% 42% 48%; background: #eca7b9; color: white; text-align: center; font-size: 22px; transform: rotate(4deg); }
+.buddy-book { position: absolute; z-index: 4; right: -20px; bottom: -4px; width: 73px; padding: 8px 7px; background: #f2b7c4; border: 3px solid white; border-radius: 5px; color: #9b5d6d; font: 700 15px/1 "Caveat", cursive; text-align: center; transform: rotate(9deg); }
+.rose-cluster { position: absolute; z-index: 8; left: 23%; bottom: 5%; color: #ef9fb4; font-size: 36px; letter-spacing: -13px; text-shadow: 8px 8px 0 #f7c4cf; transform: rotate(-12deg); }
+.rose-cluster small { font-size: 22px; }
+
+.result-panel {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,255,255,.15) 0 2px, transparent 3px),
+    linear-gradient(145deg, #d89aaa, #bc8094 58%, #8e7180);
+  background-size: 27px 27px, auto;
+}
+.result-panel .eyebrow, .session-time, .tip span { color: #fff0b9; }
+.empty-state > p:last-child, .loading-state > p:last-child, .plan-summary { color: #fff0f4; }
+.orbit { border-color: rgba(255,238,191,.6); }
+.orbit::before { border-color: rgba(255,255,255,.35); }
+.orbit::after, .orbit span { background: #fff0b9; }
+
+.session {
+  grid-template-columns: 68px 1fr;
+  min-height: 94px;
+  padding: 15px;
+  color: #5e5156;
+  box-shadow: 0 6px 0 rgba(105,66,80,.12);
+}
+.session-badge { display: grid; place-items: center; align-content: center; gap: 3px; min-height: 62px; border-right: 1px dashed rgba(94,81,86,.22); }
+.session-icon { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; background: rgba(255,255,255,.7); color: #9b6878; font-size: 19px; font-weight: 700; }
+.session-time { color: #7c6670; font-size: 12px; }
+.session h3 { color: #594b50; font-family: "Playfair Display", serif; font-size: 17px; }
+.session p { color: #695e62; }
+.session small { color: #89777d; }
+.subject-tone-0 { background: #f8d9e1; }
+.subject-tone-1 { background: #e5edc8; }
+.subject-tone-2 { background: #fae8b9; }
+.subject-tone-3 { background: #e0d9ed; }
+.subject-tone-4 { background: #d5e8e4; }
+.session.break { background: #fff5f7; border: 2px dashed rgba(244,181,197,.9); opacity: 1; }
+.session.break .session-icon { background: #f5c4d0; color: white; }
+.tip { background: rgba(255,241,245,.17); border-color: rgba(255,232,238,.48); }
+.secondary-button { background: rgba(255,238,243,.1); }
+footer { color: #a46f7d; background: rgba(250,218,226,.34); }
+
 @media (max-width: 880px) {
   .scrapbook-hero { grid-template-columns: 1fr; }
   .hero-collage { min-height: 430px; max-width: 580px; width: 100%; margin: auto; }
@@ -288,4 +348,5 @@ footer { font-family: "Caveat", cursive; font-size: 18px; }
   .memo { width: 130px; padding: 18px 10px; font-size: 18px; }
   .flower-one { width: 62px; height: 62px; font-size: 31px; }
   .photo { border-width: 6px; }
+  .study-buddy { transform: scale(.76) rotate(-5deg); transform-origin: left bottom; }
 }
