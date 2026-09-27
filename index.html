@@ -7,7 +7,7 @@
   <title>FocusMap — AI Study Planner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,22 +17,34 @@
   </header>
 
   <main>
-    <section class="hero">
-      <p class="eyebrow">Plan less. Learn better.</p>
-      <h1>A calmer way to plan<br><em>what matters next.</em></h1>
-      <p class="hero-copy">Tell us what is on your plate. FocusMap turns deadlines, confidence, and available time into a practical study session.</p>
-      <div class="hero-stats" aria-label="How the planner works">
-        <div><strong>01</strong><span>Add subjects</span></div>
-        <div><strong>02</strong><span>Set your time</span></div>
-        <div><strong>03</strong><span>Get your plan</span></div>
+    <section class="hero scrapbook-hero">
+      <div class="hero-copy-block">
+        <p class="eyebrow">A little plan for a lovely day</p>
+        <h1>Make space for<br><em>what matters.</em></h1>
+        <p class="hero-copy">Tell us what is on your plate. FocusMap turns deadlines, confidence, and available time into a gentle, practical study session.</p>
+        <div class="hero-stats" aria-label="How the planner works">
+          <div><strong>01</strong><span>Add subjects</span></div>
+          <div><strong>02</strong><span>Set your time</span></div>
+          <div><strong>03</strong><span>Get your plan</span></div>
+        </div>
+      </div>
+      <div class="hero-collage" aria-hidden="true">
+        <div class="photo photo-one"><span>slow mornings</span></div>
+        <div class="photo photo-two"><span>tiny steps count</span></div>
+        <div class="memo">today's<br><strong>little goals</strong></div>
+        <span class="sticker flower-one">✿</span>
+        <span class="sticker flower-two">❀</span>
+        <span class="sticker sparkle">✦</span>
+        <span class="tape tape-one"></span>
+        <span class="tape tape-two"></span>
       </div>
     </section>
 
     <section class="planner-section" id="planner">
       <div class="form-panel">
         <div class="section-heading">
-          <p class="eyebrow">Your inputs</p>
-          <h2>What are you working on?</h2>
+          <p class="eyebrow">Dear diary...</p>
+          <h2>What are we working on?</h2>
         </div>
 
         <form id="planner-form" novalidate>
@@ -63,8 +75,8 @@
       <aside class="result-panel" aria-live="polite">
         <div id="empty-state" class="empty-state">
           <div class="orbit" aria-hidden="true"><span></span></div>
-          <p class="eyebrow">Your schedule</p>
-          <h2>Ready when you are.</h2>
+          <p class="eyebrow">Your little schedule</p>
+          <h2>Ready when you are ♡</h2>
           <p>Your personalized plan will appear here after you complete the form.</p>
         </div>
 
