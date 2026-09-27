@@ -45,7 +45,7 @@ input:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rg
 .remove-subject:hover { color: var(--error); border-color: var(--error); }
 .text-button { margin: 18px 0 34px; padding: 0; border: 0; background: none; color: var(--green); cursor: pointer; font-weight: 700; }
 .text-button span { display: inline-grid; place-items: center; width: 24px; height: 24px; margin-right: 7px; border: 1px solid currentColor; border-radius: 50%; }
-.time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.time-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 .input-with-unit { display: flex; position: relative; }
 .input-with-unit input { padding-right: 42px; }
 .input-with-unit > span { position: absolute; right: 12px; top: 15px; color: var(--muted); font-size: 12px; text-transform: lowercase; }
@@ -68,6 +68,10 @@ input:focus, select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rg
 .orbit span { position: absolute; top: 13px; left: 70px; width: 10px; height: 10px; background: var(--lime); border-radius: 50%; transform-origin: 5px 62px; animation: orbit 7s linear infinite; }
 .loading-mark { width: 64px; height: 64px; margin-bottom: 36px; border: 2px solid rgba(201,237,131,.25); border-top-color: var(--lime); border-radius: 50%; animation: spin 1s linear infinite; }
 .session-list { display: grid; gap: 10px; margin: 28px 0; }
+.day-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0 4px; }
+.day-divider:first-child { margin-top: 0; }
+.day-divider span { flex: 0 0 auto; color: #fff4c9; font: 700 22px "Caveat", cursive; }
+.day-divider i { width: 100%; border-top: 1px dashed rgba(255,244,201,.5); }
 .session { display: grid; grid-template-columns: 58px 1fr; gap: 16px; padding: 17px; background: rgba(255,255,255,.07); border-left: 3px solid var(--lime); }
 .session.break { border-color: #769b88; opacity: .8; }
 .session-time { color: var(--lime); font-weight: 700; }
@@ -233,7 +237,19 @@ h1 em { color: var(--green); font-family: "Caveat", cursive; font-size: 1.16em; 
 .memo strong { color: #aa7482; font-size: 27px; }
 .sticker { position: absolute; z-index: 6; display: grid; place-items: center; color: white; text-shadow: 0 2px 3px rgba(60,75,50,.13); }
 .flower-one { right: 8%; bottom: 8%; width: 82px; height: 82px; background: #8faa75; border-radius: 48% 52% 45% 55%; font-size: 42px; transform: rotate(15deg); }
-.flower-two { left: 9%; top: 44%; color: #e6aebd; font-size: 61px; transform: rotate(-15deg); }
+.flower-two {
+  z-index: 3;
+  left: 4%;
+  top: 9%;
+  width: 48px;
+  height: 48px;
+  color: #e5a5b6;
+  font-size: 38px;
+  line-height: 1;
+  text-align: center;
+  transform: rotate(-10deg);
+  opacity: .9;
+}
 .sparkle { right: 34%; top: 5%; color: #fff; font-size: 35px; }
 .tape { position: absolute; z-index: 7; width: 74px; height: 24px; background: rgba(235,224,188,.72); border-left: 1px dashed rgba(120,110,80,.25); border-right: 1px dashed rgba(120,110,80,.25); }
 .tape-one { left: 33%; top: 0; transform: rotate(-6deg); }
@@ -299,8 +315,24 @@ footer { font-family: "Caveat", cursive; font-size: 18px; }
 .buddy-face b { margin-top: 14px; font: 700 20px "Caveat", cursive; }
 .buddy-beret { position: absolute; z-index: 4; top: -27px; left: 40px; width: 68px; height: 33px; border-radius: 60% 55% 42% 48%; background: #eca7b9; color: white; text-align: center; font-size: 22px; transform: rotate(4deg); }
 .buddy-book { position: absolute; z-index: 4; right: -20px; bottom: -4px; width: 73px; padding: 8px 7px; background: #f2b7c4; border: 3px solid white; border-radius: 5px; color: #9b5d6d; font: 700 15px/1 "Caveat", cursive; text-align: center; transform: rotate(9deg); }
-.rose-cluster { position: absolute; z-index: 8; left: 23%; bottom: 5%; color: #ef9fb4; font-size: 36px; letter-spacing: -13px; text-shadow: 8px 8px 0 #f7c4cf; transform: rotate(-12deg); }
-.rose-cluster small { font-size: 22px; }
+.rose-cluster {
+  position: absolute;
+  z-index: 4;
+  left: 25%;
+  bottom: 4%;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  padding: 5px 8px;
+  color: #ea9caf;
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: 0;
+  text-shadow: 2px 2px 0 #f8d2da;
+  transform: rotate(-7deg);
+  pointer-events: none;
+}
+.rose-cluster small { margin-bottom: 3px; font-size: 18px; }
 
 .result-panel {
   background:
@@ -349,4 +381,6 @@ footer { color: #a46f7d; background: rgba(250,218,226,.34); }
   .flower-one { width: 62px; height: 62px; font-size: 31px; }
   .photo { border-width: 6px; }
   .study-buddy { transform: scale(.76) rotate(-5deg); transform-origin: left bottom; }
+  .flower-two { left: 3%; top: 5%; width: 38px; height: 38px; font-size: 30px; }
+  .rose-cluster { left: 20%; bottom: 2%; font-size: 22px; }
 }

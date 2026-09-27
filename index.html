@@ -60,7 +60,18 @@
           <button type="button" id="add-subject" class="text-button"><span>+</span> Add another subject</button>
 
           <div class="time-grid">
-            <label>Available time
+            <label>Plan length
+              <span class="input-with-unit"><select id="plan-days" required>
+                <option value="1">1 day</option>
+                <option value="2">2 days</option>
+                <option value="3">3 days</option>
+                <option value="4">4 days</option>
+                <option value="5">5 days</option>
+                <option value="6">6 days</option>
+                <option value="7">1 week</option>
+              </select></span>
+            </label>
+            <label>Time per day
               <span class="input-with-unit"><input id="available-minutes" type="number" min="20" max="480" value="120" required><span>min</span></span>
             </label>
             <label>Study blocks
@@ -100,7 +111,7 @@
           <h2 id="plan-title"></h2>
           <p id="plan-summary" class="plan-summary"></p>
           <div id="session-list" class="session-list"></div>
-          <div class="tip"><span>One useful reminder</span><p id="plan-tip"></p></div>
+          <div class="tip"><span>A little reminder</span><p id="plan-tip"></p></div>
           <button id="start-over" class="secondary-button" type="button">Adjust the plan</button>
         </div>
       </aside>

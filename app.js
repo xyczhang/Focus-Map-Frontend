@@ -6,6 +6,16 @@ const errorBox = document.querySelector("#form-error");
 const emptyState = document.querySelector("#empty-state");
 const loadingState = document.querySelector("#loading-state");
 const result = document.querySelector("#plan-result");
+const reminders = [
+  "You do not need to finish everything at once—just begin with the next small step.",
+  "A short, focused session still counts. Consistency matters more than perfection.",
+  "Keep water nearby, silence one distraction, and give this block your full attention.",
+  "If you feel stuck, make the task smaller until it feels easy to begin.",
+  "Rest is part of the plan, not a reward you have to earn.",
+  "Try recalling what you learned before rereading your notes.",
+  "Done with care is better than perfect but unfinished.",
+  "At the end of each block, write down the very next step for future you."
+];
 
 function addSubject(values = {}) {
   if (subjectsContainer.children.length >= 8) return;
@@ -49,6 +59,7 @@ function getPayload() {
 
   return {
     subjects,
+    plan_days: Number(document.querySelector("#plan-days").value),
     available_minutes: Number(document.querySelector("#available-minutes").value),
     session_minutes: Number(document.querySelector("#session-minutes").value),
     break_minutes: Number(document.querySelector("#break-minutes").value)
@@ -57,6 +68,7 @@ function getPayload() {
 
 function validate(payload) {
   if (payload.subjects.some(subject => !subject.name)) return "Give every subject a name.";
+  if (!payload.plan_days || payload.plan_days < 1 || payload.plan_days > 7) return "Choose a plan length from one to seven days.";
   if (!payload.available_minutes || payload.available_minutes < 20 || payload.available_minutes > 480) return "Available time must be between 20 and 480 minutes.";
   if (!payload.session_minutes || payload.session_minutes < 10 || payload.session_minutes > 120) return "Study blocks must be between 10 and 120 minutes.";
   if (!payload.break_minutes || payload.break_minutes < 1 || payload.break_minutes > 30) return "Breaks must be between 1 and 30 minutes.";
@@ -92,18 +104,40 @@ function subjectIcon(subject, type) {
   return "♡";
 }
 
+function subjectColor(subject) {
+  let hash = 0;
+  for (const character of subject.trim().toLowerCase()) {
+    hash = ((hash << 5) - hash) + character.charCodeAt(0);
+    hash |= 0;
+  }
+  return Math.abs(hash) % 5;
+}
+
+function randomReminder() {
+  return reminders[Math.floor(Math.random() * reminders.length)];
+}
+
 function renderPlan(plan) {
   document.querySelector("#plan-title").textContent = plan.title;
   document.querySelector("#plan-summary").textContent = plan.summary;
-  document.querySelector("#plan-tip").textContent = plan.tip;
+  document.querySelector("#plan-tip").textContent = randomReminder();
 
   const list = document.querySelector("#session-list");
   list.replaceChildren();
-  let studyIndex = 0;
+  let currentDay = null;
   plan.sessions.forEach(session => {
+    const day = Number(session.day) || 1;
+    if (day !== currentDay) {
+      currentDay = day;
+      const divider = document.createElement("div");
+      divider.className = "day-divider";
+      divider.innerHTML = `<span>Day ${day}</span><i></i>`;
+      list.appendChild(divider);
+    }
+
     const card = document.createElement("article");
     const isBreak = session.type.toLowerCase() === "break";
-    card.className = isBreak ? "session break" : `session subject-tone-${studyIndex++ % 5}`;
+    card.className = isBreak ? "session break" : `session subject-tone-${subjectColor(session.subject)}`;
 
     const badge = document.createElement("div");
     badge.className = "session-badge";
